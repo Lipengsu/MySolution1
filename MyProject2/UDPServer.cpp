@@ -1,3 +1,4 @@
+//ÍøÂç±à³ÌÏîÄ¿
 //#include<iostream>
 //using namespace std;
 //#include<WinSock2.h>
