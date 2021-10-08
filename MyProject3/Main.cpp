@@ -1,3 +1,4 @@
+//Êý¾Ý¿â²Ù×÷
 #include<iostream>
 #include<stdio.h>
 #include<Windows.h>
