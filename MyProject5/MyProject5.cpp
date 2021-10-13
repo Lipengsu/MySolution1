@@ -3,12 +3,24 @@
 
 #include <iostream>
 #include"Time.h"
+using namespace std;
+
+int func(Time myt) {
+    return myt.Minute;
+}
 
 int main()
 {
+    //隐式转换与显示转换
     Time myTime=Time(1,2,3);//调用构造函数
     Time myTime2 (myTime);//调用拷贝构造函数
-    std::cout << "Hello World!\n";
+    Time myTime3 (14);
+    //Time mytiem4 =(12, 13, 14, 15, 16);
+    Time mytime5  { 12,13,53 };
+    Time mytime { 14 };
+    func(Time(14));
+    //func(2)使用int值传入func函数，会调用单参数构造函数
+    cout << mytime5.Hour<<" "<<func(Time(2))<< endl;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

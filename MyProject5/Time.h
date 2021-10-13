@@ -6,8 +6,9 @@ public:
 	int Hour;
 	int Minute;
 	int Second;
-	Time(int tmphour, int tmpmin, int tmpsec=12);
+	explicit Time(int tmphour, int tmpmin, int tmpsec=12);
 	Time();
+	explicit Time(int tmphour);
 	//{
 	//	Hour = tmphour;
 	//	Minute = tmpmin;
