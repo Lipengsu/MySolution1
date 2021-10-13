@@ -1,0 +1,4 @@
+https://play.google.com/store/apps/details?id=com.xx.yy
+
+0|6
+2|https://muf.xx.com/update/v30000_2.zip|2c4c29840ba8539baa3c4cf41ea4383a|7.19M
