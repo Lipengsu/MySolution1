@@ -5,6 +5,8 @@
 #include"Time.h"
 using namespace std;
 
+int Time::mystaic = 5;
+
 int func(Time myt) {
     return myt.Minute;
 }
@@ -17,10 +19,28 @@ int main()
     Time myTime3 (14);
     //Time mytiem4 =(12, 13, 14, 15, 16);
     Time mytime5  { 12,13,53 };
-    Time mytime { 14 };
+    Time mytime6 { 14 };
     func(Time(14));
     //func(2)使用int值传入func函数，会调用单参数构造函数
-    cout << mytime5.Hour<<" "<<func(Time(2))<< endl;
+    cout << mytime5.Hour << " " << func(Time(2)) << endl;
+
+   // this指针，杀毒软件关闭后执行
+    Time mytime7;
+    cout << mytime7.Hour << endl;
+    mytime7.rtnhour(3);
+    Time mytime8;
+    mytime8.rtnhour(3).rtnminnute(5);
+    cout << mytime8.Hour <<":" << mytime8.Minute <<":" << mytime8.Second << endl;
+
+    //static
+    cout << Time::mystaic << endl;
+    Time mytime9,mytime10;
+    mytime9.mystaic = 12;
+    cout << mytime10.mystaic << endl;
+    Time::mystafunc(1288);
+    mytime10.mystafunc(1299);
+    cout << Time::mystaic << endl;
+
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

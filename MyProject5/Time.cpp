@@ -23,3 +23,18 @@ Time::Time(int tmphpur) {
 void Time::initMillTime(int mis) {
 	Hour = Hour + mis;
 }
+void Time::nonnne() const {
+	myHour += 3;
+}
+//返回自身的引用
+Time& Time::rtnhour(int tmphour1) {
+	Hour += tmphour1;
+	return *this;
+}
+Time& Time::rtnminnute(int tmpminute) {
+	Minute += tmpminute;
+	return *this;
+}
+void Time::mystafunc(int tmpstatic) {
+	mystaic = tmpstatic;
+}
