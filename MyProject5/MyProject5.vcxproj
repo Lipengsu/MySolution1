@@ -141,9 +141,11 @@
   <ItemGroup>
     <ClCompile Include="MyProject5.cpp" />
     <ClCompile Include="Time.cpp" />
+    <ClCompile Include="Time2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Time.h" />
+    <ClInclude Include="Time2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

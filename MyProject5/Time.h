@@ -22,13 +22,16 @@ public:
 	//	myHour += 3;
 	//}
 	//返回自身的引用
-	Time& rtnhour(int temhour);
-	Time& rtnminnute(int tmpminute);
+	//Time& rtnhour(int temhour);
+	//Time& rtnminnute(int tmpminute);
 	static int mystaic;
 	static void mystafunc(int testvalue);
+
+	const int convalue;
 	
 private:
 	int Millisecond;
 	void initMillTime(int mls);
 };
+void WriteTime(Time& mytime);
 #endif // !__MYtime

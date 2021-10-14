@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include"Time.h"
+#include"Time2.h"
 using namespace std;
 
 int Time::mystaic = 5;
@@ -25,12 +26,12 @@ int main()
     cout << mytime5.Hour << " " << func(Time(2)) << endl;
 
    // this指针，杀毒软件关闭后执行
-    Time mytime7;
+   /* Time mytime7;
     cout << mytime7.Hour << endl;
     mytime7.rtnhour(3);
     Time mytime8;
     mytime8.rtnhour(3).rtnminnute(5);
-    cout << mytime8.Hour <<":" << mytime8.Minute <<":" << mytime8.Second << endl;
+    cout << mytime8.Hour <<":" << mytime8.Minute <<":" << mytime8.Second << endl;*/
 
     //static
     cout << Time::mystaic << endl;
@@ -41,6 +42,13 @@ int main()
     mytime10.mystafunc(1299);
     cout << Time::mystaic << endl;
 
+    //非成员函数
+    Time mytime11;
+    WriteTime(mytime11);
+
+    //默认构造函数（无参数构造函数）
+    Time2 mytime1;
+    cout << mytime1.Seocnd << endl;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
