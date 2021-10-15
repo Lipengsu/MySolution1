@@ -11,6 +11,7 @@ int Time::mystaic = 5;
 int func(Time myt) {
     return myt.Minute;
 }
+//void func1(int a);
 
 int main()
 {
@@ -19,11 +20,21 @@ int main()
     Time myTime2 (myTime);//调用拷贝构造函数
     Time myTime3 (14);
     //Time mytiem4 =(12, 13, 14, 15, 16);
-    Time mytime5  { 12,13,53 };
-    Time mytime6 { 14 };
+    Time myTime5  { 12,13,53 };
+    Time myTime6 { 14 };
     func(Time(14));
     //func(2)使用int值传入func函数，会调用单参数构造函数
-    cout << mytime5.Hour << " " << func(Time(2)) << endl;
+    cout << myTime5.Hour << " " << func(Time(2)) << endl;
+
+    //拷贝构造函数
+    cout << "拷贝测试开始" << endl;
+    Time myTime1a;
+    Time myTime1b = myTime1a;
+    Time myTime1c;
+    myTime1c = myTime1b;   //没有调用拷贝构造函数
+    cout << "拷贝测试结束" << endl;
+    int b = 3;
+    //func1(30000);
 
    // this指针，杀毒软件关闭后执行
    /* Time mytime7;
@@ -35,21 +46,24 @@ int main()
 
     //static
     cout << Time::mystaic << endl;
-    Time mytime9,mytime10;
-    mytime9.mystaic = 12;
-    cout << mytime10.mystaic << endl;
+    Time myTime9,myTime10;
+    myTime9.mystaic = 12;
+    cout << myTime10.mystaic << endl;
     Time::mystafunc(1288);
-    mytime10.mystafunc(1299);
+    myTime10.mystafunc(1299);
     cout << Time::mystaic << endl;
 
     //非成员函数
-    Time mytime11;
-    WriteTime(mytime11);
+    Time myTime11;
+    WriteTime(myTime11);
 
     //默认构造函数（无参数构造函数）
     Time2 mytime1;
     cout << mytime1.Seocnd << endl;
 }
+//void func1(double b) {
+//    cout << b << endl;
+//}
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单

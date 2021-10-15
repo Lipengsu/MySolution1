@@ -5,19 +5,19 @@ using namespace std;
 //构造函数初始化列表在函数执行前就执行了
 //某个成员变量的值不要依赖其他变量
 // const成员初始化
-Time::Time(int tmphour, int tmpmin,int tmpsec):convalue(tmphour){
+Time::Time(int tmphour, int tmpmin,int tmpsec){
 	Hour = tmphour;
 	Minute = tmpmin;
 	Second = tmpsec;
 	initMillTime(1);
 }
-Time::Time() :convalue() {
+Time::Time()  {
 	Hour = 2;
 	Minute = 59;
 	Second = 48;
 	initMillTime(3);
 }
-Time::Time(int tmphpur) :convalue(tmphpur) {
+Time::Time(int tmphpur) {
 	Hour = tmphpur;
 	Minute = tmphpur;
 	Second = tmphpur;
@@ -43,4 +43,7 @@ void Time::mystafunc(int tmpstatic) {
 }
 void WriteTime(Time& mytime) {
 	cout << mytime.Hour << endl;
+}
+Time::Time(const Time& tmptime,int a):tmpclass(tmptime.tmpclass),Hour(tmptime.Hour) {
+	cout << "调用了拷贝构造函数" << endl;
 }
