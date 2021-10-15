@@ -28,10 +28,10 @@ int main()
 
     //拷贝构造函数
     cout << "拷贝测试开始" << endl;
-    Time myTime1a;
-    Time myTime1b = myTime1a;
-    Time myTime1c;
-    myTime1c = myTime1b;   //没有调用拷贝构造函数
+    Time myTime12;
+    Time myTime13 = myTime12;
+    Time myTime14;
+    myTime14 = myTime13;   //没有调用拷贝构造函数
     cout << "拷贝测试结束" << endl;
     int b = 3;
     //func1(30000);
@@ -60,6 +60,11 @@ int main()
     //默认构造函数（无参数构造函数）
     Time2 mytime1;
     cout << mytime1.Seocnd << endl;
+
+    //重载运算符
+    Time myTime15;
+    //对象15调用“=”重载运算符，形参为myTime12
+    myTime15 = myTime12;
 }
 //void func1(double b) {
 //    cout << b << endl;

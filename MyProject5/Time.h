@@ -13,6 +13,9 @@ public:
 	Tmpclass(const Tmpclass& tmpclass) {
 		cout << "调用了tmpclass的拷贝构造函数" << endl;
 	}
+	~Tmpclass() {
+		cout << "Tmpclass的析构函数执行了" << endl;
+	}
 };
 
 class Time {
@@ -45,6 +48,13 @@ public:
 	//const int convalue;
 	Time(const Time& tmptime, int a = 3);
 	Tmpclass tmpclass;
+
+	//重载运算符
+	bool operator==(Time& t);
+	Time& operator=(const Time& tmpTime);
+
+	//析构函数
+	~Time();
 
 private:
 	int Millisecond;

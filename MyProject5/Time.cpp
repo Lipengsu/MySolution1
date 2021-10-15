@@ -47,3 +47,22 @@ void WriteTime(Time& mytime) {
 Time::Time(const Time& tmptime,int a):tmpclass(tmptime.tmpclass),Hour(tmptime.Hour) {
 	cout << "调用了拷贝构造函数" << endl;
 }
+bool Time::operator==(Time& t) {
+	if (Hour == t.Hour)
+		return true;
+	else
+		return false;
+}
+//const不会更改形参的值，
+Time& Time::operator= (const Time& tmpTime)
+{
+	Hour = tmpTime.Hour + 1;
+	Minute = tmpTime.Minute;
+	cout << "重载运算符=" << endl;
+	return *this;
+}
+Time::~Time() {
+	int abc;
+	abc = 0;
+	cout << "调用了Time的析构函数" << endl;
+}
