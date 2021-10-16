@@ -19,4 +19,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="myvector.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="myarray.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

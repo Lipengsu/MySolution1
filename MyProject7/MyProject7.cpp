@@ -2,6 +2,8 @@
 //模板与泛型
 
 #include <iostream>
+#include"myvector.h"
+#include"myarray.h"
 
 using namespace std;
 
@@ -34,6 +36,7 @@ inline int charcomp(char const(&p1)[L1], char const(&p2)[L2]) {
     return strcmp(p1, p2);
 }
 
+
 int main()
 {
     int he = funcadd(3, 1);
@@ -45,6 +48,18 @@ int main()
     int result2 = charcomp("test2", "test1");
     cout << result2 << endl;
     //std::cout << "Hello World!\n";
+    cout << "-------------*-------------"<<endl;
+    //类模板，类型模板参数
+    myvector<int> tmpvec;
+    
+    //类模板，非类型模板参数的使用
+    myarray<int, 100> tmparr;
+    myarray<int> tmparr1;
+    tmparr1.myfunc();
+
+    myarray<int, 50> tmparr2;
+    tmparr2.myfunc();
+
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
