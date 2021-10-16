@@ -24,4 +24,16 @@ template<typename T>
 myvector<T>& myvector<T>::operator=(const myvector<T>&) {
 
 }
+
+//typename标明这是一个类型 
+template<typename T>
+typename myvector<T>::myiterator myvector<T>::mybegin() {
+
+}
+template <typename T>
+typename T::size_type get_length(const T& c) {
+	if (c.empty())
+		return 0;
+	return c.size();
+}
 #endif // !__MYVECTOR__

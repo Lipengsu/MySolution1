@@ -7,6 +7,31 @@
 
 using namespace std;
 
+class tc {
+public:
+    tc() {
+        cout << "构造函数执行" << endl;
+    }
+    tc(const tc& t) {
+        cout << "拷贝构造函数" << endl;
+    }
+    int operator()(int v1, int v2)const {
+        return v1 + v2;
+    }
+};
+
+//函数指针
+typedef int(*FunType)(int, int);
+int mf(int tmp1, int tmp2) {
+    return tmp1 + tmp2;
+}
+
+template<typename T, typename F=FunType>
+void testfun(const T&i, const T&j, F funcpoint=mf){
+    int result = funcpoint(i, j);
+    cout << result << endl;
+}
+//testfun<int,FunType>(3,4,mf);
 //int funcadd(int i1, int i2) {
 //    int sumadd = i1 + i2;
 //    return sumadd;
@@ -59,6 +84,17 @@ int main()
 
     myarray<int, 50> tmparr2;
     tmparr2.myfunc();
+
+    //typename
+    string mytest = "I love China!";
+    //string::size_type为类型
+    string::size_type size2 = get_length(mytest);
+    cout << size2 << endl;
+
+    //函数指针
+    //testfun(3, 4, mf);
+    tc tobcj;
+    testfun(3, 4);
 
 }
 
