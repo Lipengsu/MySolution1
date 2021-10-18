@@ -79,6 +79,17 @@ int main()
     //men.Human::samenamefunc();
     //men.Human::samenamefunc(5);
 
+    //父类指针调用子类的成员函数(通过虚函数来实现访问)
+  /*  Human* phuman = new Human();
+    phuman->eat();
+    delete phuman;*/
+
+    Human *phuman = new Men();
+    phuman->eat();
+    phuman->Human::eat();
+    delete phuman;
+
+
     
 }
 //void func1(double b) {
