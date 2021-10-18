@@ -4,6 +4,8 @@
 #include <iostream>
 #include"Time.h"
 #include"Time2.h"
+#include"Human.h"
+#include"Men.h"
 using namespace std;
 
 int Time::mystaic = 5;
@@ -15,6 +17,7 @@ int func(Time myt) {
 
 int main()
 {
+    /*
     //隐式转换与显示转换
     Time myTime=Time(1,2,3);//调用构造函数
     Time myTime2 (myTime);//调用拷贝构造函数
@@ -36,13 +39,13 @@ int main()
     int b = 3;
     //func1(30000);
 
-   // this指针，杀毒软件关闭后执行
-   /* Time mytime7;
+    // this指针，杀毒软件关闭后执行
+    /* Time mytime7;
     cout << mytime7.Hour << endl;
     mytime7.rtnhour(3);
     Time mytime8;
     mytime8.rtnhour(3).rtnminnute(5);
-    cout << mytime8.Hour <<":" << mytime8.Minute <<":" << mytime8.Second << endl;*/
+    cout << mytime8.Hour <<":" << mytime8.Minute <<":" << mytime8.Second << endl;*
 
     //static
     cout << Time::mystaic << endl;
@@ -65,6 +68,18 @@ int main()
     Time myTime15;
     //对象15调用“=”重载运算符，形参为myTime12
     myTime15 = myTime12;
+
+    */
+    //继承访问等级
+    //Men men;
+    //m_age的权限变为protected，只允许在类中或类的成员函数访问，在主函数中不可以
+    //men.m_age = 10;
+    //cout << men.m_age << endl;
+    //men.samenamefunc();
+    //men.Human::samenamefunc();
+    //men.Human::samenamefunc(5);
+
+    
 }
 //void func1(double b) {
 //    cout << b << endl;

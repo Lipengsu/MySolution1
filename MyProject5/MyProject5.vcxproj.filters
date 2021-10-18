@@ -24,12 +24,24 @@
     <ClCompile Include="Time2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Human.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Men.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Time.h">
       <Filter>源文件</Filter>
     </ClInclude>
     <ClInclude Include="Time2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Human.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Men.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
