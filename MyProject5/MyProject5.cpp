@@ -14,7 +14,7 @@ using namespace std;
 int Time::mystaic = 5;
 
 int func(Time myt) {
-    return myt.Minute;
+	return myt.Minute;
 }
 //void func1(int a);
 //非const成员函数不能被const对象调用
@@ -138,48 +138,56 @@ int main()
     //cout << typeid(*phuman).name() << endl;
     //cout << typeid(q).name() << endl;
 
-    Human* phuman = new Men;
-    Human* phuman2 = new Men;
-    if (typeid(phuman) == typeid(phuman2)) {
-        cout << typeid(phuman).name() << endl;
-        cout << "phuamn与phuman2的指针类型相同" << endl;
-    }
-    else {
-        cout << "phuamn与phuman2的指针类型不相同" << endl;
-    }
+    //Human* phuman = new Men;
+    //Human* phuman2 = new Men;
+    //if (typeid(phuman) == typeid(phuman2)) {
+    //    cout << typeid(phuman).name() << endl;
+    //    cout << "phuamn与phuman2的指针类型相同" << endl;
+    //}
+    //else {
+    //    cout << "phuamn与phuman2的指针类型不相同" << endl;
+    //}
 
-    Human* phuman3 = new Men;
-    Men* phuman4 = new Men;
-    Human* phuman5 =  phuman4;
-    if (typeid(*phuman3) == typeid(*phuman4)) //都指向Men
-    {
-        cout << typeid(*phuman3).name() << endl;
-        cout << "phuamn3与phuman4的指向同一种类型" << endl;
-    }
-    if (typeid(*phuman4) == typeid(*phuman5)) //都指向Men
-    {
-        cout << "phuamn4与phuman5的指向同一种类型" << endl;
-    }
+    //Human* phuman3 = new Men;
+    //Men* phuman4 = new Men;
+    //Human* phuman5 =  phuman4;
+    //if (typeid(*phuman3) == typeid(*phuman4)) //都指向Men
+    //{
+    //    cout << typeid(*phuman3).name() << endl;
+    //    cout << "phuamn3与phuman4的指向同一种类型" << endl;
+    //}
+    //if (typeid(*phuman4) == typeid(*phuman5)) //都指向Men
+    //{
+    //    cout << "phuamn4与phuman5的指向同一种类型" << endl;
+    //}
 
-    Human* phuman6 = new Men;
-    if (typeid(*phuman6) == typeid(Men)) {
-        cout << "phuman6指向Men" << endl;
-    }
+    //Human* phuman6 = new Men;
+    //if (typeid(*phuman6) == typeid(Men)) {
+    //    cout << "phuman6指向Men" << endl;
+    //}
 
-    Human* phuman7 = new Human;
-    if (typeid(*phuman7) == typeid(Human)) {
-        cout << "没有虚函数时就成立"<<endl;
-    }
+    //Human* phuman7 = new Human;
+    //if (typeid(*phuman7) == typeid(Human)) {
+    //    cout << "没有虚函数时就成立"<<endl;
+    //}
 
-    Human* phuman8 = new Human;
-    const std::type_info& tp = typeid(*phuman8);
-    cout << tp.name() << endl;
+    //Human* phuman8 = new Human;
+    //const std::type_info& tp = typeid(*phuman8);
+    //cout << tp.name() << endl;
 
-    Human* phuman9 = new Men;
-    const std::type_info& tp1 = typeid(*phuman9);
-    if (tp == tp1) {
-        cout << "类型相同" << endl;
-    }
+    //Human* phuman9 = new Men;
+    //const std::type_info& tp1 = typeid(*phuman9);
+    //if (tp == tp1) {
+    //    cout << "类型相同" << endl;
+    //}
+
+
+	B btest(10, 20, 50);
+	btest.myinfoB();
+	btest.myinfoA();
+
+	Men men;
+	Human human(men);
 
 
 

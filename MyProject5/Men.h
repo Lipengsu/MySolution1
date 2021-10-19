@@ -19,6 +19,33 @@ using namespace std;
 //	}
 //};
 
+//class A {
+//public:
+//	//构造函数初始化列表
+//	A(int i) :m_valuea(i) {};
+//	virtual ~A() {};
+//	void myinfoA() {
+//		std::cout << m_valuea << std::endl;
+//	}
+//	//friend void B::callBAF(int x, A& a);
+//private:
+//	int data;
+//	int m_valuea;
+//};
+//
+//class B :public A {
+//public:
+//	B(int i, int j, int k) :A(i), m_valuec(k) {};
+//	virtual ~B() {}
+//	void myinfoB() {
+//		std::cout << m_valuec << std::endl;
+//	}
+//	//void callBAF(int x, A& a);
+//private:
+//	int m_valuec;
+//
+//};
+
 class Men :public Human {
 public:
 	Men();
