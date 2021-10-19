@@ -31,6 +31,9 @@ public:
 	~Men() {
 		cout << "Men的析构函数执行了！" << endl;
 	}
+	void testfunc1() {
+		cout << "父类指针调用子类成员函数测试" << endl;
+	}
 private:
 	void funcmen2() const{
 		cout << "men::funcmen2" << endl;

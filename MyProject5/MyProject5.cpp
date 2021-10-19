@@ -99,11 +99,87 @@ int main()
     //delete phuman;
 
     //友元函数
-    Men men;
+    /*Men men;
     func(men);
     A a;
     B b;
-    b.callBAF(3, a);
+    b.callBAF(3, a);*/
+
+    ////父类指针访问不了子类成员函数
+    //Human* phuman = new Men;
+    //phuman->testfunc();
+
+    //Human* phuman = new Men;
+    //Men* p = (Men*)phuman;
+    //p->testfunc1();
+    //delete phuman;
+    //指针转换
+ //   Human* phuman = new Men;
+ //   Men* pmen = dynamic_cast<Men*>(phuman);
+ //   if (pmen != nullptr) {
+ //       cout << "phuman实际指向一个Men类型对象" << endl;
+ //   }
+ //   else {
+ //       cout << "phuman实际指向的不是一个Men类型对象" << endl;
+ //   }
+ //   //引用转换
+ //   Men mymen;
+ //   Human& myhuman = mymen;
+	//try {
+	//	Men& ifment = dynamic_cast<Men&>(myhuman);
+	//	cout << "myhuman实际上是一个Men类型" << endl;
+	//}
+	//catch (bad_cast) {
+	//	cout << "myhuman实际上不是一个Men类型" << endl;
+	//}
+    //typeid
+    //Human* phuman = new Men;
+    //Human& q = *phuman;
+    //cout << typeid(*phuman).name() << endl;
+    //cout << typeid(q).name() << endl;
+
+    Human* phuman = new Men;
+    Human* phuman2 = new Men;
+    if (typeid(phuman) == typeid(phuman2)) {
+        cout << typeid(phuman).name() << endl;
+        cout << "phuamn与phuman2的指针类型相同" << endl;
+    }
+    else {
+        cout << "phuamn与phuman2的指针类型不相同" << endl;
+    }
+
+    Human* phuman3 = new Men;
+    Men* phuman4 = new Men;
+    Human* phuman5 =  phuman4;
+    if (typeid(*phuman3) == typeid(*phuman4)) //都指向Men
+    {
+        cout << typeid(*phuman3).name() << endl;
+        cout << "phuamn3与phuman4的指向同一种类型" << endl;
+    }
+    if (typeid(*phuman4) == typeid(*phuman5)) //都指向Men
+    {
+        cout << "phuamn4与phuman5的指向同一种类型" << endl;
+    }
+
+    Human* phuman6 = new Men;
+    if (typeid(*phuman6) == typeid(Men)) {
+        cout << "phuman6指向Men" << endl;
+    }
+
+    Human* phuman7 = new Human;
+    if (typeid(*phuman7) == typeid(Human)) {
+        cout << "没有虚函数时就成立"<<endl;
+    }
+
+    Human* phuman8 = new Human;
+    const std::type_info& tp = typeid(*phuman8);
+    cout << tp.name() << endl;
+
+    Human* phuman9 = new Men;
+    const std::type_info& tp1 = typeid(*phuman9);
+    if (tp == tp1) {
+        cout << "类型相同" << endl;
+    }
 
 
 
