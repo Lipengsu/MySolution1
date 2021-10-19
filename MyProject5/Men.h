@@ -4,6 +4,21 @@
 #include "Human.h"
 #include<iostream>
 using namespace std;
+
+//class A {
+//	//友元类
+//	friend class B;
+//private:
+//	int data;
+//};
+//class B {
+//public:
+//	void callBAF(int x, A& a) {
+//		a.data = x;
+//		cout << a.data << endl;
+//	}
+//};
+
 class Men :public Human {
 public:
 	Men();
@@ -16,6 +31,11 @@ public:
 	~Men() {
 		cout << "Men的析构函数执行了！" << endl;
 	}
+private:
+	void funcmen2() const{
+		cout << "men::funcmen2" << endl;
+	}
+	friend void func(const Men& tmpmen);
 };
 
 #endif // !__MEN__

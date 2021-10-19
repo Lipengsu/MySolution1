@@ -139,6 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="A.cpp" />
+    <ClCompile Include="B.cpp" />
     <ClCompile Include="Human.cpp" />
     <ClCompile Include="Men.cpp" />
     <ClCompile Include="MyProject5.cpp" />
@@ -146,6 +148,9 @@
     <ClCompile Include="Time2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="A.h" />
+    <ClInclude Include="B.h" />
+    <ClInclude Include="func.h" />
     <ClInclude Include="Human.h" />
     <ClInclude Include="Men.h" />
     <ClInclude Include="Time.h" />

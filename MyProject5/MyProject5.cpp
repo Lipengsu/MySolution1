@@ -6,6 +6,9 @@
 #include"Time2.h"
 #include"Human.h"
 #include"Men.h"
+#include"func.h"
+#include"A.h"
+#include"B.h"
 using namespace std;
 
 int Time::mystaic = 5;
@@ -14,6 +17,12 @@ int func(Time myt) {
     return myt.Minute;
 }
 //void func1(int a);
+//非const成员函数不能被const对象调用
+//void func(const Men& tmpmen) {
+//    tmpmen.funcmen2();
+//}
+
+
 
 int main()
 {
@@ -84,10 +93,20 @@ int main()
     phuman->eat();
     delete phuman;*/
 
-    Human *phuman = new Men();
-    phuman->eat();
-    phuman->Human::eat();
-    delete phuman;
+    //Human *phuman = new Men();
+    //phuman->eat();
+    //phuman->Human::eat();
+    //delete phuman;
+
+    //友元函数
+    Men men;
+    func(men);
+    A a;
+    B b;
+    b.callBAF(3, a);
+
+
+
 
 
     

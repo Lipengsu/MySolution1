@@ -30,6 +30,12 @@
     <ClCompile Include="Men.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="B.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="A.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Time.h">
@@ -42,6 +48,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Men.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="func.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="A.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="B.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
