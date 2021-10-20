@@ -189,6 +189,35 @@ int main()
 	Men men;
 	Human human(men);
 
+    //左值、右值、左值引用，右值引用与move
+    string strtest{ "I LOVE CHINA" };
+    string& r1 = { strtest };
+    //或
+    const string& r2 = {"I LOVE CHINA"};
+
+    int i = 10;
+    int& r3 = i;
+    int&& r4 = i*100;
+    const int& r5 = i * 100;
+
+    int j = 5;
+    //j++为右值
+    int&& r6 = j++;
+    //++j为左值
+    int& r7 = ++j;
+
+    int&& r8 = 100;
+    int&& r9 = std::move(r8);
+    r8 = 99;//r8与r9都变成99
+    r9 = 101;//r8与r9都变成101
+
+    string st = "I Love China";
+    const char* p = st.c_str();
+    string def = std::move(st);   //string里的移动构造函数把st的内容转移到def中去，这个转移并不是std::move干的
+    const char* q = def.c_str();
+    
+
+
 
 
 
