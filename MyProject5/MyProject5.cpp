@@ -7,8 +7,10 @@
 #include"Human.h"
 #include"Men.h"
 #include"func.h"
-#include"A.h"
-#include"B.h"
+//#include"A.h"
+//#include"B.h"
+#include"C.h"
+#include"CTempValue.h"
 using namespace std;
 
 int Time::mystaic = 5;
@@ -89,7 +91,7 @@ int main()
     //men.Human::samenamefunc(5);
 
     //父类指针调用子类的成员函数(通过虚函数来实现访问)
-  /*  Human* phuman = new Human();
+    /*  Human* phuman = new Human();
     phuman->eat();
     delete phuman;*/
 
@@ -182,39 +184,87 @@ int main()
     //}
 
 
-	B btest(10, 20, 50);
-	btest.myinfoB();
-	btest.myinfoA();
+	//B btest(10, 20, 50);
+	//btest.myinfoB();
+	//btest.myinfoA();
 
-	Men men;
-	Human human(men);
+	//Men men;
+	//Human human(men);
 
-    //左值、右值、左值引用，右值引用与move
-    string strtest{ "I LOVE CHINA" };
-    string& r1 = { strtest };
-    //或
-    const string& r2 = {"I LOVE CHINA"};
+    //   //左值、右值、左值引用，右值引用与move
+ //   string strtest{ "I LOVE CHINA" };
+ //   string& r1 = { strtest };
+ //   //或
+ //   const string& r2 = {"I LOVE CHINA"};
 
-    int i = 10;
-    int& r3 = i;
-    int&& r4 = i*100;
-    const int& r5 = i * 100;
+    //   int i = 10;
+ //   int& r3 = i;
+ //   int&& r4 = i*100;
+ //   const int& r5 = i * 100;
 
-    int j = 5;
-    //j++为右值
-    int&& r6 = j++;
-    //++j为左值
-    int& r7 = ++j;
+    //   int j = 5;
+ //   //j++为右值
+ //   int&& r6 = j++;
+ //   //++j为左值
+ //   int& r7 = ++j;
 
-    int&& r8 = 100;
-    int&& r9 = std::move(r8);
-    r8 = 99;//r8与r9都变成99
-    r9 = 101;//r8与r9都变成101
+    //   int&& r8 = 100;
+ //   int&& r9 = std::move(r8);
+ //   r8 = 99;//r8与r9都变成99
+ //   r9 = 101;//r8与r9都变成101
 
-    string st = "I Love China";
-    const char* p = st.c_str();
-    string def = std::move(st);   //string里的移动构造函数把st的内容转移到def中去，这个转移并不是std::move干的
-    const char* q = def.c_str();
+    //   string st = "I Love China";
+ //   const char* p = st.c_str();
+ //   string def = std::move(st);   //string里的移动构造函数把st的内容转移到def中去，这个转移并不是std::move干的
+ //   const char* q = def.c_str();
+      
+
+      //临时对象深入探讨
+      //CTempvalue tm(10, 20);
+      //cout << &tm << endl;
+      ////调用拷贝构造函数，生成形参tobj，拷贝构造函数的参数为const，希望在生成形参的时候，tm的值不应该被更改，
+      ////tobj与tm一样，tobj在函数体内使用，不会影响到tm，因为tobj不是tm的引用。
+      //int sum = tm.Add(tm);
+      //cout << "sum=" << sum << endl;
+      //cout << "tm.val1=" << tm.val1 << endl;
+
+      //CTempvalue sum1;
+      //有临时对象的产生
+      //1,系统用1000创建一个CTempvalue的临时对象
+      //2,调用拷贝复制运算符把临时对象里面的值都赋值给sum1对象
+      //3,销毁刚刚创建的CTempvalue类型的临时对象
+      //sum1 = 1000;
+
+      //以上两行代码优化
+      //CTempvalue sum1 = 1000;
+
+      //函数返回对象的时候产生临时对象
+      //CTempvalue ts1(10, 20);
+      //CTempvalue ts2 = Double1(ts1);
+      //有变量来接受Double1函数返回的值，则不会立即调用这个对象的析构函数，
+      //否则会立即调用这个对象的析构函数
+      //CTempvalue ts3 = Double2(ts1);  //不会立即调用
+
+      //移动构造函数
+      B* pb = new B();
+      pb->m_bm = 19;
+      B* pb2 = new B(*pb);
+      delete pb;
+      delete pb2;
+
+      //A a = getA();
+      //A a1(a);
+      //A a2(std::move(a));
+      //A&& ady = getA();
+
+      A a = getA();
+      A a2;
+      a2 = std::move(a);
+      
+
+
+
+
     
 
 
