@@ -9,7 +9,9 @@
 #include"func.h"
 //#include"A.h"
 //#include"B.h"
-#include"C.h"
+//#include"C.h"
+//#include"D.h"
+#include"E.h"
 #include"CTempValue.h"
 using namespace std;
 
@@ -246,20 +248,35 @@ int main()
       //CTempvalue ts3 = Double2(ts1);  //不会立即调用
 
       //移动构造函数
-      B* pb = new B();
-      pb->m_bm = 19;
-      B* pb2 = new B(*pb);
-      delete pb;
-      delete pb2;
+      //B* pb = new B();
+      //pb->m_bm = 19;
+      //B* pb2 = new B(*pb);
+      //delete pb;
+      //delete pb2;
 
       //A a = getA();
       //A a1(a);
       //A a2(std::move(a));
       //A&& ady = getA();
 
-      A a = getA();
-      A a2;
-      a2 = std::move(a);
+      //A a = getA();
+      //A a2;
+      //a2 = std::move(a);
+      
+      //继承的构造函数 
+      //B ad(3, 4);
+
+      //多重继承
+      C ctest(10, 20, 50);
+      //ctest.myinfoC();
+      //访问类A的成员函数
+      //ctest.A::myinfo();
+      //ctest.myinfo();
+
+      //Grand::m_static = 1;
+      //A::m_static = 2;
+      //C::m_static = 3;
+      //ctest.m_static = 5;
       
 
 

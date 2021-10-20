@@ -152,6 +152,8 @@
     <ClInclude Include="B.h" />
     <ClInclude Include="C.h" />
     <ClInclude Include="CTempValue.h" />
+    <ClInclude Include="D.h" />
+    <ClInclude Include="E.h" />
     <ClInclude Include="func.h" />
     <ClInclude Include="Human.h" />
     <ClInclude Include="Men.h" />
