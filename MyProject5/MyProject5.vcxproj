@@ -154,6 +154,7 @@
     <ClInclude Include="CTempValue.h" />
     <ClInclude Include="D.h" />
     <ClInclude Include="E.h" />
+    <ClInclude Include="F.h" />
     <ClInclude Include="func.h" />
     <ClInclude Include="Human.h" />
     <ClInclude Include="Men.h" />

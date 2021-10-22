@@ -11,7 +11,8 @@
 //#include"B.h"
 //#include"C.h"
 //#include"D.h"
-#include"E.h"
+//#include"E.h"
+#include"F.h"
 #include"CTempValue.h"
 using namespace std;
 
@@ -267,7 +268,7 @@ int main()
       //B ad(3, 4);
 
       //多重继承
-      C ctest(10, 20, 50);
+      //C ctest(10, 20, 50);
       //ctest.myinfoC();
       //访问类A的成员函数
       //ctest.A::myinfo();
@@ -277,6 +278,16 @@ int main()
       //A::m_static = 2;
       //C::m_static = 3;
       //ctest.m_static = 5;
+
+      //类型转换运算符
+      Testint ti = 12;
+      Testint ti2(22);
+      ti2 = 6;
+      int k = static_cast<int>(ti2) + 5;
+      int k2 = ti2.operator int() + 5;
+
+      Testint myi(12);
+      myi(123);
       
 
 
