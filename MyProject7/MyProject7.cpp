@@ -2,6 +2,7 @@
 //模板与泛型
 
 #include <iostream>
+#include<map>
 #include"myvector.h"
 #include"myarray.h"
 #include"A.h"
@@ -9,6 +10,19 @@
 //模板实例化声明
 extern template A<float>;
 using namespace std;
+
+//定义类型别名
+typedef map<string, int> map_s_i;
+//类型名不固定定义法
+template<typename T>
+using str_map_t = map<string, T>;
+//给函数指针类型模板起别名
+template<typename T>
+using myfunc_M = int(*)(T, T);
+int RealFunc(int i, int j)
+{
+    return 3;
+}
 
 class tc {
 public:
@@ -64,6 +78,12 @@ inline int charcomp(char const(&p1)[L1], char const(&p2)[L2]) {
     return strcmp(p1, p2);
 }
 
+//
+template<typename T1,typename T2,typename T3>
+T1 sum(T2 i, T3 j) {
+    T1 result = i + j;
+    return result;
+}
 
 int main()
 {
@@ -99,10 +119,23 @@ int main()
     //tc tobcj;
     //testfun(3, 4);
 
-    //成员函数模板
-    A<float> a(1, 2);
-    A<float> a2(1.1, 2.2);
-    a.myft(3);
+    ////成员函数模板
+    //A<float> a(1, 2);
+    //A<float> a2(1.1, 2.2);
+    //a.myft(3);
+
+    //map_s_i mymap;
+    //mymap.insert({"first",1});
+
+    //str_map_t<int> map1;
+    //map1.insert({"first",1});
+    //函数指针  myfunc_M<int>为类型名
+    myfunc_M<int> pointFunc;
+    pointFunc = RealFunc;
+    cout << pointFunc(1, 6) << endl;
+    //显示指定模板参数
+    auto  result = sum<double,double,double>(2000000000,2000000000);
+    cout << result << endl;
 
 }
 
