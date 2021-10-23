@@ -140,8 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MyProject7.cpp" />
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="A.h" />
+    <ClInclude Include="ca.h" />
     <ClInclude Include="myarray.h" />
     <ClInclude Include="myvector.h" />
   </ItemGroup>

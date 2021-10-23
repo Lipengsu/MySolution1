@@ -4,7 +4,10 @@
 #include <iostream>
 #include"myvector.h"
 #include"myarray.h"
+#include"A.h"
 
+//模板实例化声明
+extern template A<float>;
 using namespace std;
 
 class tc {
@@ -64,37 +67,42 @@ inline int charcomp(char const(&p1)[L1], char const(&p2)[L2]) {
 
 int main()
 {
-    int he = funcadd(3, 1);
-    cout << he << endl;
-    int result = funcadd2<12, 13>();
-    cout << result << endl;
-    int result1 = funcadd3<int, 11, 12>(13);
-    cout << result1 << endl;
-    int result2 = charcomp("test2", "test1");
-    cout << result2 << endl;
-    //std::cout << "Hello World!\n";
-    cout << "-------------*-------------"<<endl;
-    //类模板，类型模板参数
-    myvector<int> tmpvec;
-    
-    //类模板，非类型模板参数的使用
-    myarray<int, 100> tmparr;
-    myarray<int> tmparr1;
-    tmparr1.myfunc();
+    //int he = funcadd(3, 1);
+    //cout << he << endl;
+    //int result = funcadd2<12, 13>();
+    //cout << result << endl;
+    //int result1 = funcadd3<int, 11, 12>(13);
+    //cout << result1 << endl;
+    //int result2 = charcomp("test2", "test1");
+    //cout << result2 << endl;
+    ////std::cout << "Hello World!\n";
+    //cout << "-------------*-------------"<<endl;
+    ////类模板，类型模板参数
+    //myvector<int> tmpvec;
+    //
+    ////类模板，非类型模板参数的使用
+    //myarray<int, 100> tmparr;
+    //myarray<int> tmparr1;
+    //tmparr1.myfunc();
 
-    myarray<int, 50> tmparr2;
-    tmparr2.myfunc();
+    //myarray<int, 50> tmparr2;
+    //tmparr2.myfunc();
 
-    //typename
-    string mytest = "I love China!";
-    //string::size_type为类型
-    string::size_type size2 = get_length(mytest);
-    cout << size2 << endl;
+    ////typename
+    //string mytest = "I love China!";
+    ////string::size_type为类型
+    //string::size_type size2 = get_length(mytest);
+    //cout << size2 << endl;
 
-    //函数指针
-    //testfun(3, 4, mf);
-    tc tobcj;
-    testfun(3, 4);
+    ////函数指针
+    ////testfun(3, 4, mf);
+    //tc tobcj;
+    //testfun(3, 4);
+
+    //成员函数模板
+    A<float> a(1, 2);
+    A<float> a2(1.1, 2.2);
+    a.myft(3);
 
 }
 
