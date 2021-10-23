@@ -6,6 +6,7 @@
 #include"myvector.h"
 #include"myarray.h"
 #include"A.h"
+#include"B.h"
 
 //模板实例化声明
 extern template A<float>;
@@ -130,13 +131,49 @@ int main()
     //str_map_t<int> map1;
     //map1.insert({"first",1});
     //函数指针  myfunc_M<int>为类型名
-    myfunc_M<int> pointFunc;
-    pointFunc = RealFunc;
-    cout << pointFunc(1, 6) << endl;
-    //显示指定模板参数
-    auto  result = sum<double,double,double>(2000000000,2000000000);
-    cout << result << endl;
+    //myfunc_M<int> pointFunc;
+    //pointFunc = RealFunc;
+    //cout << pointFunc(1, 6) << endl;
+    ////显示指定模板参数
+    //auto  result = sum<double,double,double>(2000000000,2000000000);
+    //cout << result << endl;
 
+    //类模板特化
+    //TC<char, int> tchar;
+    //tchar.functest();
+
+    //TC<int, int> tint;
+    //tint.testfunc();
+    //对象时泛化版本的模板构造函数，调用的是<double,doubel>的特化版本
+    //TC<double, double> tint2;
+    //tint2.functest();
+
+    //泛化
+    //TCP<double, int, double> tcpdi;
+    //tcpdi.functest();
+    //偏特化
+ //   TCP<int, int, double> tcpdi1;
+ //   tcpdi1.functest();
+
+	//TCF<double> td;
+	//td.testfunc();
+	//TCF<double*>tcfd;
+	//tcfd.testfunc();
+	//TCF<const int>tcfi;
+	//tcfi.testfunc();
+	//TCF<int&>tcfyin;
+	//tcfyin.testfunc();
+	//TCF<int&&>tcfyii;
+	//tcfyii.testfunc();
+
+    //函数模板全特化
+    const char* p = "I Love China!";
+    int i = 12;
+    tfunc(p, i);
+
+    int k = 12;
+    double db = 15.8f;
+    tfunc(k, db);
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

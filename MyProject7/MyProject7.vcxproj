@@ -144,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="A.h" />
+    <ClInclude Include="B.h" />
     <ClInclude Include="ca.h" />
     <ClInclude Include="myarray.h" />
     <ClInclude Include="myvector.h" />
