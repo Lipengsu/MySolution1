@@ -166,14 +166,21 @@ int main()
 	//TCF<int&&>tcfyii;
 	//tcfyii.testfunc();
 
-    //函数模板全特化
-    const char* p = "I Love China!";
-    int i = 12;
-    tfunc(p, i);
+    ////函数模板全特化
+    //const char* p = "I Love China!";
+    //int i = 12;
+    //tfunc(p, i);
 
-    int k = 12;
-    double db = 15.8f;
-    tfunc(k, db);
+    //int k = 12;
+    //double db = 15.8f;
+    //tfunc(k, db);
+
+    //可变参数模板
+    //myfunct1();
+    //myfunct1(10, 20);
+    //myfunct1(10, 25.8, 80000000000, "abc","fsgfsgdsffgdgsfffffffffffffffffffffffffff");
+
+    myfunct2(10,"abc",1.1,0);
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

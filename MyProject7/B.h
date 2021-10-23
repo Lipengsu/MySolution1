@@ -27,7 +27,6 @@ void TC<double, double>::functest() {
 }
 
 template<typename T,typename U,typename W>
-
 //偏特化
 struct TCP {
 	TCP() {
@@ -37,8 +36,9 @@ struct TCP {
 		cout << "TCP泛化版本" << endl;
 	}
 };
-template<typename U>
 
+
+template<typename U>
 struct TCP<int, U, double> {
 	TCP() {
 		cout << "偏特化构造函数" << endl;
@@ -118,3 +118,23 @@ void tfunc(int& tmprv, double& tmprv2) {
 //2.函数模板调用时，如果利用自动类型推导，不会发生隐式类型转换；
 //3.如果利用显示指定类型的方式，可以发生隐式类型转换。
 //函数模板不能偏特化，只有类模板可以偏特化
+
+//可变函数模板
+template<typename...T>
+void myfunct1(T... args) {
+	//sizeof...表示收到的模板参数的个数，只能用于一包类型或者形参
+	cout << sizeof...(args) << endl;
+	//与上一行的效果相同
+	cout << sizeof...(T) << endl;
+}
+
+//此函数必须放在myfunct2可变参数模板的上面位置。否则当参数为0时无法调用myfunct2
+void myfunct2() {
+	cout << "参数包展开完毕后的执行的递归终止函数" << endl;
+}
+template<typename T,typename... U>
+void myfunct2(const T& firstarg, const U&... otherargs) {
+	cout << "收到的参数值为：" <<firstarg<< endl;
+	myfunct2(otherargs ...);//一包形参， ...不能省略
+}
+
