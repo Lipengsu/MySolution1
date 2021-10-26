@@ -69,9 +69,14 @@ BOOL CMyProjectMFCDlg::OnInitDialog()
 	//A* pA2 = new A[2]();//6字节内存泄露
 	//自定义类型A中有析构函数内存为2字节，则必须使用delete []来释放内存，
 	//若无析构函数内存为6字节，则使用delete和delete[]都可以
-	//
-	A* pA3 = new A[2];
-	//delete []pA3;
+	////
+	//A* pA3 = new A[2];
+	////delete []pA3;
+
+	//shared_ptr<int> pother(new int(12345));
+	//char outbuf[1024];
+	//sprintf_s(outbuf, sizeof(outbuf), "%d", *pother);
+	////OutputDebugString(outbuf);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
