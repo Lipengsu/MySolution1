@@ -91,28 +91,56 @@ int main()
     //sprintf_s(outbuf, sizeof(outbuf), "%d", *pother);
     //OutputDebugString(outbuf);
     
-    //get成员函数
-    shared_ptr<int> myp(new int(100));
-    int* p = myp.get();
-    *p = 45;
-    //swap成员函数
-    shared_ptr<string> ps1(new string("hello World!"));
-    shared_ptr<string> ps2(new string("hello World"));
-    swap(ps1, ps2);
-    ps1.swap(ps2);
-    
-    //指定删除器
-    shared_ptr<int> p1(new int(12345), myDelete);
-    shared_ptr<int> p2(p1);
-    p2.reset();
-    p1.reset();
-    shared_ptr<int> p3(new int(123456), [](int* p3){delete p3;});
-    p3.reset();
+    ////get成员函数
+    //shared_ptr<int> myp(new int(100));
+    //int* p = myp.get();
+    //*p = 45;
+    ////swap成员函数
+    //shared_ptr<string> ps1(new string("hello World!"));
+    //shared_ptr<string> ps2(new string("hello World"));
+    //swap(ps1, ps2);
+    //ps1.swap(ps2);
+    //
+    ////指定删除器
+    //shared_ptr<int> p1(new int(12345), myDelete);
+    //shared_ptr<int> p2(p1);
+    //p2.reset();
+    //p1.reset();
+    //shared_ptr<int> p3(new int(123456), [](int* p3){delete p3;});
+    //p3.reset();
 
-    shared_ptr<int[]> p4(new int[10], [](int* p4){
-        delete[] p4; 
-     });
+    //shared_ptr<int[]> p4(new int[10], [](int* p4){
+    //    delete[] p4; 
+    // });
 
+    //weak_ptr
+    //auto pi = make_shared<int>(100);
+    //weak_ptr<int> piw(pi);
+    //weak_ptr<int> piw2(piw);
+    //auto pi2 = piw.lock();//强引用计数会加1，
+
+    ////成员函数
+    //int isc = piw.use_count();//强引用的个数
+
+    //lock成员函数
+    auto p1 = make_shared<int>(42);
+    weak_ptr<int>pw;
+    pw = p1;
+    if (!pw.expired()) {
+        auto p2 = pw.lock();//获取所监视的shared_ptr,同时p2也会增加引用计数。
+        if (p2 != nullptr) {
+            cout << "所指对象存在" << endl;
+        }
+    }
+    else {
+        cout << "pw已经过期" << endl;
+    }
+
+    //尺寸问题
+    shared_ptr<int> p3(new int(100));
+    weak_ptr<int> p4(p3);
+    int lens = sizeof(p3);//8字节
+    int lenw = sizeof(p4);//8字节
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
