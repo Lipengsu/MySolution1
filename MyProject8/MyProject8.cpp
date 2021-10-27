@@ -30,6 +30,23 @@ void myDelete(int* p) {
     delete p;
 }
 
+shared_ptr<int> create0(int value) {
+    return make_shared <int>(value);
+}
+
+shared_ptr<int> myfunc(int value) {
+    shared_ptr<int> ptmp = create0(10);
+    return ptmp;
+}
+
+class CT:public enable_shared_from_this<CT> {
+public:
+    shared_ptr<CT> getself() {
+        //return shared_ptr<CT>(this);
+        return shared_from_this();
+    }
+};
+
 int main()
 {
     //A* pi = new A[2];
@@ -122,25 +139,55 @@ int main()
     ////成员函数
     //int isc = piw.use_count();//强引用的个数
 
-    //lock成员函数
-    auto p1 = make_shared<int>(42);
-    weak_ptr<int>pw;
-    pw = p1;
-    if (!pw.expired()) {
-        auto p2 = pw.lock();//获取所监视的shared_ptr,同时p2也会增加引用计数。
-        if (p2 != nullptr) {
-            cout << "所指对象存在" << endl;
-        }
-    }
-    else {
-        cout << "pw已经过期" << endl;
+    ////lock成员函数
+    //auto p1 = make_shared<int>(42);
+    //weak_ptr<int>pw;
+    //pw = p1;
+    //if (!pw.expired()) {
+    //    auto p2 = pw.lock();//获取所监视的shared_ptr,同时p2也会增加引用计数。
+    //    if (p2 != nullptr) {
+    //        cout << "所指对象存在" << endl;
+    //    }
+    //}
+    //else {
+    //    cout << "pw已经过期" << endl;
+    //}
+
+    ////尺寸问题
+    //shared_ptr<int> p3(new int(100));
+    //weak_ptr<int> p4(p3);
+    //int lens = sizeof(p3);//8字节
+    //int lenw = sizeof(p4);//8字节
+
+    //关于shared_ptr的一些使用陷阱
+    //auto p=myfunc(10);
+
+    ////慎用裸指针
+    //int* pi = new int;
+    //shared_ptr<int> p1(pi);
+    ////会导致pi所指向的内存被释放两次，报错。
+    //shared_ptr<int> p2(pi);
+
+    //慎用get函数返回的指针
+    shared_ptr<int> myp(new int(100));
+    int* p3 = myp.get();
+    //delete p3;//异常
+
+    shared_ptr<int> myp2(new int(100));
+    int* p4 = myp2.get();
+    {
+        //shared_ptr<int> myp3(p4);//异常
+        shared_ptr<int> myp3(myp2);
     }
 
-    //尺寸问题
-    shared_ptr<int> p3(new int(100));
-    weak_ptr<int> p4(p3);
-    int lens = sizeof(p3);//8字节
-    int lenw = sizeof(p4);//8字节
+    //
+    shared_ptr<CT> pt1(new CT);
+    //强引用使用类模板enable_shared_from_this之后强引用变为2
+    shared_ptr<CT> pt2 = pt1->getself();
+ 
+
+
+
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
