@@ -5,15 +5,15 @@
 
 using namespace std;
 
-//class A {
-//public:
-//    A() {
-//        cout << "A的构造函数执行了" << endl;
-//    }
-//    ~A() {
-//        cout << "~A()的析构函数执行了" << endl;
-//    }
-//};
+class A {
+public:
+    A() {
+        cout << "A的构造函数执行了" << endl;
+    }
+    ~A() {
+        cout << "~A()的析构函数执行了" << endl;
+    }
+};
 //
 //shared_ptr<int> makes(int value) {
 //    //return new int(value);//错误，不可以隐式转换
@@ -46,6 +46,11 @@ public:
         return shared_from_this();
     }
 };
+
+auto myfunc2()
+{
+    return unique_ptr<string>(new string("Hello Wolrd"));
+}
 
 int main()
 {
@@ -107,7 +112,7 @@ int main()
     //char outbuf[1024];
     //sprintf_s(outbuf, sizeof(outbuf), "%d", *pother);
     //OutputDebugString(outbuf);
-    
+
     ////get成员函数
     //shared_ptr<int> myp(new int(100));
     //int* p = myp.get();
@@ -168,22 +173,95 @@ int main()
     ////会导致pi所指向的内存被释放两次，报错。
     //shared_ptr<int> p2(pi);
 
-    //慎用get函数返回的指针
-    shared_ptr<int> myp(new int(100));
-    int* p3 = myp.get();
-    //delete p3;//异常
+    ////慎用get函数返回的指针
+    //shared_ptr<int> myp(new int(100));
+    //int* p3 = myp.get();
+    ////delete p3;//异常
 
-    shared_ptr<int> myp2(new int(100));
-    int* p4 = myp2.get();
-    {
-        //shared_ptr<int> myp3(p4);//异常
-        shared_ptr<int> myp3(myp2);
+    //shared_ptr<int> myp2(new int(100));
+    //int* p4 = myp2.get();
+    //{
+    //    //shared_ptr<int> myp3(p4);//异常
+    //    shared_ptr<int> myp3(myp2);
+    //}
+
+    ////
+    //shared_ptr<CT> pt1(new CT);
+    ////强引用使用类模板enable_shared_from_this之后强引用变为2
+    //shared_ptr<CT> pt2 = pt1->getself();
+
+    ////unique_ptr
+    //unique_ptr<int> p1 = std::make_unique<int>(100);
+    //auto p2 = std::make_unique<int>(200);
+
+    //shared_ptr<int> p3(new int(100));
+
+    //unique_ptr<string> ps1(new string("hello world"));
+    ////unique_ptr<string> ps2(ps1);//异常，该智能指针不支持赋值动作
+    ////移动语义
+    //unique_ptr<string> ps3(new string("hello world"));
+    //unique_ptr<string> ps4 = move(ps3);
+
+    //unique_ptr<string> ps5(new string("hello world"));
+    //unique_ptr<string> ps6(ps5.release());
+    //if (ps5 == nullptr) {
+    //    cout << "kong" << endl;
+    //}
+
+    ////释放ps2的正常操作
+    //string* temp = ps5.release();
+    //delete temp;
+
+    ////reset成员函数
+    //unique_ptr<string> ps7(new string("hello world"));
+    //ps7.reset();
+    //if (ps6 == nullptr) {
+    //    cout << "ps6 kong" << endl;
+    //}
+    //unique_ptr<string> ps8(new string("hello world1"));
+    //unique_ptr<string> ps9(new string("hello world2"));
+    //ps8.reset(ps9.release());//参数为release()返回指针
+    //ps8.reset(new string("helllo world3"));
+
+    ////=nullptr
+    //unique_ptr<string> ps10(new string("hello world4"));
+    //ps10 = nullptr;//释放对象，并置空
+
+    ////指向一个数组
+    //unique_ptr<int[]> ptrarray(new int[10]);
+    ////访问的下标范围0~9，因为定义了10个
+    //ptrarray[0] = 12;
+    //ptrarray[1] = 13;
+    //ptrarray[9] = 14;
+
+    //unique_ptr<A[]> ptrarray1(new A[10]);//有析构函数，<>中必须有[]
+    //auto mydel = [](A* p) {//写自己的删除器
+    //    delete[] p;
+    //};
+    //unique_ptr<A, decltype(mydel)> ptrarray2(new A[10], mydel);//带自己的删除器
+    
+    //get成员函数
+    unique_ptr<string> ps11(new string("hello world"));
+    string* ps = ps11.get();
+    const char* p1 = ps->c_str();
+    *ps = "hello world2";
+    const char* p2 = ps->c_str();
+
+    unique_ptr<int[]> ptrarray(new int[10]);
+    //*ptrarray;   //异常，数组是没有解引用运算符的
+
+    //swap成员函数
+    //智能指针的名字作为判断条件
+    unique_ptr<string> ps12(new string("hello World"));
+    if (ps12) {
+        cout << "ps12指向了一个对象" << endl;
     }
 
-    //
-    shared_ptr<CT> pt1(new CT);
-    //强引用使用类模板enable_shared_from_this之后强引用变为2
-    shared_ptr<CT> pt2 = pt1->getself();
+    //转换成shared_ptr类型
+    shared_ptr<string> pss1 = myfunc2();
+    //或
+    unique_ptr<string> ps13(new string("hello world1"));
+    shared_ptr<string> pss2 = move(ps13);//执行后ps为空
  
 
 
