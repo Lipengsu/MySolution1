@@ -52,6 +52,16 @@ auto myfunc2()
     return unique_ptr<string>(new string("Hello Wolrd"));
 }
 
+unique_ptr<string> tuniqp() {
+    unique_ptr<string> pr(new string("HEllo world"));
+    return pr;
+}
+
+void mydeleter(string* pdel) {
+    delete pdel;
+    pdel = nullptr;
+}
+
 int main()
 {
     //A* pi = new A[2];
@@ -240,29 +250,55 @@ int main()
     //};
     //unique_ptr<A, decltype(mydel)> ptrarray2(new A[10], mydel);//带自己的删除器
     
-    //get成员函数
-    unique_ptr<string> ps11(new string("hello world"));
-    string* ps = ps11.get();
-    const char* p1 = ps->c_str();
-    *ps = "hello world2";
-    const char* p2 = ps->c_str();
+    ////get成员函数
+    //unique_ptr<string> ps11(new string("hello world"));
+    //string* ps = ps11.get();
+    //const char* p1 = ps->c_str();
+    //*ps = "hello world2";
+    //const char* p2 = ps->c_str();
 
-    unique_ptr<int[]> ptrarray(new int[10]);
-    //*ptrarray;   //异常，数组是没有解引用运算符的
+    //unique_ptr<int[]> ptrarray(new int[10]);
+    ////*ptrarray;   //异常，数组是没有解引用运算符的
 
-    //swap成员函数
-    //智能指针的名字作为判断条件
-    unique_ptr<string> ps12(new string("hello World"));
-    if (ps12) {
-        cout << "ps12指向了一个对象" << endl;
-    }
+    ////swap成员函数
+    ////智能指针的名字作为判断条件
+    //unique_ptr<string> ps12(new string("hello World"));
+    //if (ps12) {
+    //    cout << "ps12指向了一个对象" << endl;
+    //}
 
-    //转换成shared_ptr类型
-    shared_ptr<string> pss1 = myfunc2();
-    //或
-    unique_ptr<string> ps13(new string("hello world1"));
-    shared_ptr<string> pss2 = move(ps13);//执行后ps为空
- 
+    ////转换成shared_ptr类型
+    //shared_ptr<string> pss1 = myfunc2();
+    ////或
+    //unique_ptr<string> ps13(new string("hello world1"));
+    //shared_ptr<string> pss2 = move(ps13);//执行后ps为空
+
+    //返回unique_ptr
+    unique_ptr<string> ps2;
+    ps2 = tuniqp();
+
+    //指定删除器
+    //typedef void (*fp)(string*);
+    //unique_ptr<string, fp> ps3(new string("HellO world"),mydeleter);
+    //做修改之后如下：
+    using fp2 = void(*)(string*);
+    unique_ptr<string, fp2> ps3(new string("dfafdasfa"), mydeleter);
+
+    typedef decltype(mydeleter)* fp3;
+    unique_ptr<string, fp3> ps4(new string("HELLo world"), mydeleter);
+
+    unique_ptr<string, decltype(mydeleter)*> ps5(new string("hello world"), mydeleter);
+
+    auto mydella = [](string* pdel) {
+        delete pdel;
+        pdel = nullptr;
+    };
+    unique_ptr<string, decltype(mydella)> ps6(new string("hello World"), mydella);
+
+    //unique_ptr的尺寸大小
+    int ulen1 = sizeof(ps5);//删除器为函数，字节大小为8
+    int ulen2 = sizeof(ps6);//删除器为lambda，字节大小为4
+
 
 
 
